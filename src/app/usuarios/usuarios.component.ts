@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
 import { Usuario } from '../model/Usuario';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -13,7 +14,7 @@ export class UsuariosComponent implements OnInit {
   dataSource: Usuario[];
   isLoadingResults = true;
 
-  constructor(private _api: ApiService) { }
+  constructor(private _api: ApiService,private loginService:AuthenticationService) { }
 
   ngOnInit() {
     this._api.getUsuarios()
