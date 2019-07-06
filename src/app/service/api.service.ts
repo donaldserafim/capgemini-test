@@ -20,7 +20,7 @@ export class ApiService {
 
 
   getUsuarios (): Observable<Usuario[]> {
-    const url = `${apiUrl}`;
+    const url = `${apiUrl}/ativo/true`;
     return this.http.get<Usuario[]>(url)
       .pipe(
         tap(usuarios => console.log('leu os usuarios')),
@@ -37,7 +37,6 @@ export class ApiService {
   }
 
   addUsuario (usuario): Observable<Usuario> {
-    console.log('testee')
     return this.http.post<Usuario>(apiUrl, usuario, httpOptions).pipe(
       tap((usuario: Usuario) => console.log(`adicionou o usuario com w/ id=${usuario.id}`)),
       catchError(this.handleError<Usuario>('addUsuario'))

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { catchError, tap, map } from 'rxjs/operators';
 import { Observable, of, throwError } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
+import { User } from '../model/User';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -13,16 +14,17 @@ const httpOptions = {
 })
 
 export class AuthenticationService {
+  private currentUserSubject: BehaviorSubject<User>;
+  public currentUser: Observable<User>;
 
   constructor(private httpClient: HttpClient) { }
 
   authenticate(username, password) {
-    if (username === "javainuse" && password === "password") {
-      sessionStorage.setItem('username', username)
-      return true;
-    } else {
-      return false;
-    }
+    return this.httpClient.post<any>(`http://localhost:8080/login`, { username, password })
+            .pipe(map(user => {
+                    sessionStorage.setItem('username', username)
+                return user;
+            }));
   }
 
   isUserLoggedIn() {
