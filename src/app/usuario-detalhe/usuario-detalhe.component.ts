@@ -33,7 +33,7 @@ export class UsuarioDetalheComponent implements OnInit {
     this.api.deleteUsuario(id)
       .subscribe(res => {
           this.isLoadingResults = false;
-          this.router.navigate(['/usuarios']);
+          this.router.navigate(['/h2-console']);
         }, (err) => {
           console.log(err);
           this.isLoadingResults = false;

@@ -9,7 +9,7 @@ import { LogoutComponent } from './logout/logout.component';
 
 const routes: Routes = [
   {
-    path: 'usuarios',
+    path: 'h2-console',
     component: UsuariosComponent,
     data: { title: 'Lista de Usuários' }
   },
@@ -29,7 +29,7 @@ const routes: Routes = [
     data: { title: 'Editar o Usuário' }
   },
   { path: '',
-    redirectTo: '/usuarios',
+    redirectTo: '/h2-console',
     pathMatch: 'full'
   },
   { path: 'login', 
