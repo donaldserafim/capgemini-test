@@ -1,5 +1,5 @@
-#Build
+# Build
 ng serve
 
-#Endereço
+# Endereço
 http://localhost:4200/
